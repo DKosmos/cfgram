@@ -5,10 +5,11 @@ const server = require('../server.js');
 const serverToggle = require('../lib/server-toggle.js');
 const User = require('../model/user.js');
 const PhotoAlbum = require('../model/photoalbum.js');
+const PORT = process.env.PORT || 3000;
 
 require('jest');
 
-const url = 'http://localhost:3000';
+const url = `http://localhost:${PORT}`;
 
 const exampleUser = {
   username: 'exampleuser',
@@ -96,7 +97,7 @@ describe('Photo Album Routes', function(){
     describe('with no body or invalid body', () => {
       it('should return a 400 error', done => {
         request.post(`${url}/api/photoalbum`)
-          .send([])
+          .send('peanut')
           .set({
             Authorization: `Bearer ${this.tempToken}`,
           })

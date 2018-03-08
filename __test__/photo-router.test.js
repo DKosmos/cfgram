@@ -6,6 +6,7 @@ const fs = Promise.promisifyAll(require('fs'), { suffix: 'Prom'});
 const debug = require('debug')('cfgram:photo-router.test');
 const server = require('../server.js');
 const serverToggle = require('../lib/server-toggle.js');
+const PORT = process.env.PORT || 3000;
 
 const Photo = require('../model/photo.js');
 const User = require('../model/user.js');
@@ -13,7 +14,7 @@ const PhotoAlbum = require('../model/photoalbum.js');
 
 require('jest');
 
-const url = 'http://localhost:3000';
+const url = `http://localhost:${PORT}`;
 
 const exampleUser = {
   username: 'exampleuser',
