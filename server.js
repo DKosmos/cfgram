@@ -24,6 +24,9 @@ app.use(morgan('dev'));
 app.use(authRouter);
 app.use(photoAlbumRouter);
 app.use(photoRouter);
+app.get('*', (req, res) => {
+  return res.status(404).send('route not found');
+});
 
 
 app.use(errors);
